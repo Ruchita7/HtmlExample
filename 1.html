@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<header>
+    <style>
+        table {
+            border-collapse : collapse;
+        }
+    table,th,td {
+        border : 1px solid gray;
+    }
+    
+    th,td {
+        padding: 10px;
+    }
+    
+    .header {
+        background-color : #DCDCDC;
+    }
+    
+    .row1 {
+        background-color: #F4C8AC
+    }
+    
+    .row2 {
+        background-color : #AEDFB9
+    }
+    
+    .row3 {
+        background-color: #D7EFF6
+    }
+    
+    .row4 {
+        background-color: #FFFCD7
+    }
+    </style>
+    
+    <script>
+        
+        function showDetail()  {
+            var table = document.getElementById("tableId");
+            if(table)       {
+                for (var i = 0; i < table.rows.length; i++) {
+                    var currentRow = table.rows[i];
+                    currentRow.onclick =  function() {
+                        tableText(this);
+                    }
+                }
+            }
+        }
+    
+    function tableText(row)  {
+        alert("Parent Asset\n"+"Id: " + row.cells[0].innerHTML + "\nName: "+row.cells[1].innerHTML+ " \nDate of Manufacturing: "+row.cells[2].innerHTML+ "\nAssigned To: "+row.cells[3].innerHTML+"\nRelease Date: "+ row.cells[4].innerHTML);
+    }
+    
+    
+    function showChildDetails() {
+        var table = document.getElementById("childTable");
+        if(table)  {
+            for(var i=0; i< table.rows.length; i++)     {
+                var currentRow = table.rows[i];
+                currentRow.onclick = function()  {
+                    print(this);
+                }
+            }
+        }
+    }
+    
+    function print(row)     {
+        alert("Child asset detail:\n"+ "ID: "+row.cells[0].innerHTML+"\nParent ID: "+row.cells[1].innerHTML+ "\nName: "+ row.cells[2].innerHTML+ "\nDate of Manufacturing: "+row.cells[3].innerHTML);
+    }
+    
+        </script>
+</header>
+<body onload="showDetail(),showChildDetails()">
+    <p style="font-weight:bold">Parent Assets</p>
+    
+    <table id="tableId">
+        <tr class="header">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Date of Manufacturing</th>
+            <th>Assigned To</th>
+            <th>Release Date</th>
+        </tr>
+        
+        <tr class="row1">
+            <td>P1</td>
+            <td>Laptop</td>
+            <td>21-Jan-2020</td>
+            <td>134567</td>
+            <td>21-Jan-2022</td>
+        </tr>
+        
+        <tr class="row2">
+            <td>P2</td>
+            <td>Desktop</td>
+            <td>01-Jan-2020</td>
+            <td>223456</td>
+            <td>01-Jan-2022</td>
+        </tr>
+        
+        <tr class="row3">
+            <td>P3</td>
+            <td>Mac</td>
+            <td>01-Jan-2020</td>
+            <td>012356</td>
+            <td>01-Jan-2022</td>
+        </tr>
+        
+        <tr class="row4">
+            <td>P4</td>
+            <td>iPhone</td>
+            <td>01-Jan-2020</td>
+            <td>127459</td>
+            <td>01-Jan-2022</td>
+        </tr>
+    </table>
+    <br/>
+    
+    <p style="font-weight:bold">Child Assets</p>
+    <table id="childTable">
+        <tr class="header">
+            <th>ID</th>
+            <th>Parent ID</th>
+            <th>Name</th>
+            <th>Date of Manufacturing</th>
+        </tr>
+        
+        <tr class="row1">
+            <td>C1</td>
+            <td>P1</td>
+            <td>Mouse</td>
+            <td>21-Jan-2022</td>
+        </tr>
+        
+        <tr class="row1">
+            <td>C2</td>
+            <td>P1</td>
+            <td>Key Board</td>
+            <td>01-Jan-2022</td>
+        </tr>
+        
+        <tr class="row2">
+            <td>C3</td>
+            <td>P2</td>
+            <td>Mouse</td>
+            <td>21-Jan-2022</td>
+        </tr>
+        
+        <tr class="row2">
+            <td>C4</td>
+            <td>P2</td>
+            <td>Key Board</td>
+            <td>01-Jan-2022</td>
+        </tr>
+        
+        <tr class="row4">
+            <td>C5</td>
+            <td>P4</td>
+            <td>Charger</td>
+            <td>01-Jan-2022</td>
+        </tr>
+        
+        <tr class="row3">
+            <td>C6</td>
+            <td>P3</td>
+            <td>Mouse</td>
+            <td>01-Jan-2022</td>
+        </tr>
+    </table>
+    
+    
+</body>
+
+</html>
